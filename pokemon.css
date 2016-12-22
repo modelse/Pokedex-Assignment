@@ -1,0 +1,13 @@
+#gallery{
+    display: inline-block;
+    width:900px;
+    vertical-align: top;
+}
+#pokedex{
+    border: solid 30px red;
+    width: 300px;
+    height: 600px;
+    display: inline-block;
+    vertical-align: top;
+    position: fixed;
+}

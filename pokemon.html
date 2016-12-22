@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Eve's Pokedex</title>
+        <link rel="stylesheet" type="text/css" href="pokemon.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                // alert('hello');
+                for(var i=1; i<152; i++){
+                    var pokemon='<img id="' + i + '" src="http://pokeapi.co/media/img/' + i + '.png">';
+                    $('#gallery').append(pokemon);
+                }
+            $("img").click(function(){
+                var id = (this).id;
+                console.log(id)
+                var grab= "http://pokeapi.co/api/v1/pokemon/" + id + "/"
+            $.get(grab, function(res) {
+                var types=" ";
+                for(var i=0; i<res.types.length; i++){
+                 types +="<li>" + res.types[i].name + "</li>";
+                    console.log(res.types);
+                }
+                $('#pokedex').html("<h2>" + res.name + "</h2>" + '<img src="http://pokeapi.co/media/img/' + id + '.png">'+ "<h3>Types</h3>" + "<ul>" + types + "</ul>" + "<h3>Height</h3>" + res.height + "<h3>Weight</h3>"
+                    + res.weight);
+                console.log(res)
+                }, "json");
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div id="gallery">
+        </div>
+        <div id="pokedex">
+
+
+
+        </div>
+    </body>
+</html>
